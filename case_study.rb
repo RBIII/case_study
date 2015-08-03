@@ -1,7 +1,7 @@
 require 'rubyXL'
 require 'pg'
 require 'date'
-require 'pry'
+
 Case_DataSet = RubyXL::Parser.parse('/home/rocco/Dropbox/Case_DataSet.xlsx')
 
 def db_connection
@@ -37,7 +37,6 @@ def get_consumers
 end
 
 def add_all_data
-  binding.pry
   Case_DataSet.worksheets[1].extract_data.each_with_index do |row, index|
     current_consumers = get_consumers
     unless index == 0
@@ -121,7 +120,7 @@ def average_stay
   (stay_lengths/total_visits).to_f
 end
 
-add_all_data
+# add_all_data
 puts "Question 1"
 puts "Region A Hospitalizations: #{region_a_hospitalizations} unique hospitalizations"
 puts "Region B Hospitalizations: #{region_b_hospitalizations} unique hospitalizations"
